@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="./cache.js"></script>
+        <script>
+        (async function() {
+            console.log("Init serviceworker")
+
+            if('serviceWorker' in navigator){
+                try{
+                    var swInstall = await navigator.serviceWorker.register('sw_arnob.js')
+                    console.log('sw installed')
+                } catch (err){
+                    console.log("sw install error", err)
+
+                }
+            } else {
+                console.log('sw not supported')
+            }
+
+        })();
+        </script>
+    </head>
+    <body onload="helloFromCache()">
+        <p>Service Worker Demo</p>
+    </body>
+</html>
